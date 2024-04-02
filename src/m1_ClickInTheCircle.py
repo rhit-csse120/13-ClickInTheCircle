@@ -3,7 +3,7 @@ import math
 
 ################################################################################
 # IMPORTANT:
-# Do this ENTIRE PROJECT by following the associated videos for Click In The Circle.
+# Do this ENTIRE PROJECT by following the "live-coding" in class.
 ################################################################################
 
 
