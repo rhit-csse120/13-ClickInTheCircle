@@ -1,3 +1,23 @@
+"""
+This module demonstrates how to do the following in PyGame:
+  -- mouse clicks
+  -- drawing
+  -- text (with fonts)
+  -- sound (via pygame.mixer.music)
+
+Authors: David Mutchler, Rachel Krohn, Dave Fisher, Shawn Bohner, Sriram Mohan,
+         Amanda Stouder, Vibha Alangar, Mark Hays, Dave Henthorn, Matt Boutell,
+         Scott McClellan, Yiji Zhang, Mohammed Noureddine, Steve Chenoweth,
+         Claude Anderson, Michael Wollowski, Chandan Rupakheti,
+         Derek Whitley, Curt Clifton, Valerie Galluzzi, their colleagues and
+         PUT_YOUR_NAME_HERE.
+"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+
+"""
+Academic Integrity: I got help on this module from:
+         PUT_HERE_THE_NAMES_OF_PEOPLE_WHO_HELPED_YOU_ON_THIS_MODULE_(IF_ANY).
+"""  # TODO: If you got help from anyone on this module, list their names here.
+
 import pygame, sys
 import math
 
@@ -16,7 +36,7 @@ def distance(point1, point2):
     # DONE 4: Return the actual distance between point 1 and point 2.
     #  Hint: you will need the math library for the sqrt function.
     #       distance = sqrt(   (delta x) ** 2 + (delta y) ** 2  )
-    return math.sqrt((point1_x - point2_x)**2 + (point1_y - point2_y)**2)
+    return math.sqrt((point1_x - point2_x) ** 2 + (point1_y - point2_y) ** 2)
 
 
 def main():
@@ -28,7 +48,7 @@ def main():
     # DONE 8: Load the "drums.wav" file into the pygame music mixer
     pygame.mixer.music.load("drums.wav")
 
-    instruction_text = 'Click in the circle'
+    instruction_text = "Click in the circle"
     text_color = (222, 222, 0)
     instructions_image = font.render(instruction_text, True, text_color)
 
@@ -37,7 +57,7 @@ def main():
     circle_radius = 50
     circle_border_width = 3
 
-    message_text = ''
+    message_text = ""
 
     while True:
         events = pygame.event.get()
@@ -49,14 +69,14 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 click_position = pygame.mouse.get_pos()
 
-            # DONE 3: Determine the distance between the click position and the circle_center using the distance
-            # DONE 3:   function and save the result into a variable called distance_from_circle
+                # DONE 3: Determine the distance between the click position and the circle_center using the distance
+                # DONE 3:   function and save the result into a variable called distance_from_circle
                 distance_from_circle = distance(click_position, circle_center)
 
-            # DONE 5: If distance_from_circle is less than or equal to circle_radius, set message_text to 'Bullseye!'
-            # DONE 5: If distance_from_circle is greater than the circle_radius, set the message_text to 'You missed!'
-            # DONE 9: Start playing the music mixer looping forever if the click is within the circle
-            # DONE 10: Stop playing the music if the click is outside the circle
+                # DONE 5: If distance_from_circle is less than or equal to circle_radius, set message_text to 'Bullseye!'
+                # DONE 5: If distance_from_circle is greater than the circle_radius, set the message_text to 'You missed!'
+                # DONE 9: Start playing the music mixer looping forever if the click is within the circle
+                # DONE 10: Stop playing the music if the click is outside the circle
                 if distance_from_circle <= circle_radius:
                     message_text = "Bullseye!"
                     pygame.mixer.music.play(loops=-1)
@@ -67,12 +87,13 @@ def main():
         screen.fill(pygame.Color("Black"))
 
         # DONE 1: Draw the circle using the screen, circle_color, circle_center, circle_radius, and circle_border_width
-        pygame.draw.circle(screen, circle_color, circle_center, circle_radius, circle_border_width)
+        pygame.draw.circle(
+            screen, circle_color, circle_center, circle_radius, circle_border_width
+        )
 
         # DONE 6: Create a text image (render the text) based on the message_text with the color (122, 237, 201)
-        message = font.render(message_text, True, (122, 237, 201))
-
         screen.blit(instructions_image, (25, 25))
+        message = font.render(message_text, True, (122, 237, 201))
 
         # DONE 7: Draw (blit) the message to the user that says 'Bullseye!' or 'You missed!'
         screen.blit(message, (screen.get_width() // 2, screen.get_height() - 100))

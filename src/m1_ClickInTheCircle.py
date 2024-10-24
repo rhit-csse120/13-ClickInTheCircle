@@ -1,3 +1,23 @@
+"""
+This module demonstrates how to do the following in PyGame:
+  -- mouse clicks
+  -- drawing
+  -- text (with fonts)
+  -- sound (via pygame.mixer.music)
+
+Authors: David Mutchler, Rachel Krohn, Dave Fisher, Shawn Bohner, Sriram Mohan,
+         Amanda Stouder, Vibha Alangar, Mark Hays, Dave Henthorn, Matt Boutell,
+         Scott McClellan, Yiji Zhang, Mohammed Noureddine, Steve Chenoweth,
+         Claude Anderson, Michael Wollowski, Chandan Rupakheti,
+         Derek Whitley, Curt Clifton, Valerie Galluzzi, their colleagues and
+         PUT_YOUR_NAME_HERE.
+"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+
+"""
+Academic Integrity: I got help on this module from:
+         PUT_HERE_THE_NAMES_OF_PEOPLE_WHO_HELPED_YOU_ON_THIS_MODULE_(IF_ANY).
+"""  # TODO: If you got help from anyone on this module, list their names here.
+
 import pygame, sys
 import math
 
@@ -27,7 +47,7 @@ def main():
 
     # TODO 8: Load the "drums.wav" file into the pygame music mixer
 
-    instruction_text = 'Click in the circle'
+    instruction_text = "Click in the circle"
     text_color = (222, 222, 0)
     instructions_image = font.render(instruction_text, True, text_color)
 
@@ -36,7 +56,7 @@ def main():
     circle_radius = 50
     circle_border_width = 3
 
-    message_text = ''
+    message_text = ""
 
     while True:
         events = pygame.event.get()
