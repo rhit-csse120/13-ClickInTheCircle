@@ -10,13 +10,13 @@ Authors: David Mutchler, Rachel Krohn, Dave Fisher, Shawn Bohner, Sriram Mohan,
          Scott McClellan, Yiji Zhang, Mohammed Noureddine, Steve Chenoweth,
          Claude Anderson, Michael Wollowski, Chandan Rupakheti,
          Derek Whitley, Curt Clifton, Valerie Galluzzi, their colleagues and
-         PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         SOLUTION by David Mutchler.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 """
 Academic Integrity: I got help on this module from:
-         PUT_HERE_THE_NAMES_OF_PEOPLE_WHO_HELPED_YOU_ON_THIS_MODULE_(IF_ANY).
-"""  # TODO: If you got help from anyone on this module, list their names here.
+         my instructor.
+"""  # DONE: If you got help from anyone on this module, list their names here.
 
 import pygame, sys
 import math
@@ -29,8 +29,8 @@ import math
 
 def distance(point1, point2):
     point1_x = point1[0]
-    point2_x = point2[0]
     point1_y = point1[1]
+    point2_x = point2[0]
     point2_y = point2[1]
 
     # DONE 4: Return the actual distance between point 1 and point 2.
@@ -45,7 +45,7 @@ def main():
     pygame.display.set_caption("Mouse click positions")
     font = pygame.font.Font(None, 25)
 
-    # DONE 8: Load the "drums.wav" file into the pygame music mixer
+    # DONE 9: Load the "drums.wav" file into the pygame mixer's music module.
     pygame.mixer.music.load("drums.wav")
 
     instruction_text = "Click in the circle"
@@ -65,38 +65,40 @@ def main():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-            # DONE 2: For a MOUSEBUTTONDOWN event get the click position.
+            # DONE 3: For a MOUSEBUTTONDOWN event get the click position.
             if event.type == pygame.MOUSEBUTTONDOWN:
-                click_position = pygame.mouse.get_pos()
-
-                # DONE 3: Determine the distance between the click position and the circle_center using the distance
-                # DONE 3:   function and save the result into a variable called distance_from_circle
-                distance_from_circle = distance(click_position, circle_center)
-
-                # DONE 5: If distance_from_circle is less than or equal to circle_radius, set message_text to 'Bullseye!'
-                # DONE 5: If distance_from_circle is greater than the circle_radius, set the message_text to 'You missed!'
-                # DONE 9: Start playing the music mixer looping forever if the click is within the circle
-                # DONE 10: Stop playing the music if the click is outside the circle
-                if distance_from_circle <= circle_radius:
+                if distance(event.pos, circle_center) <= circle_radius:
                     message_text = "Bullseye!"
-                    pygame.mixer.music.play(loops=-1)
+                    pygame.mixer.music.play(-1)
                 else:
                     message_text = "You missed!"
                     pygame.mixer.music.stop()
+            # DONE 5: Determine the distance between the click position
+            #   and the circle_center using the distance function and
+            #   save the result into a variable called distance_from_circle
+            # DONE 6: If distance_from_circle is less than or equal to
+            #   circle_radius, set the message_text to "Bullseye!"
+            #   Otherwise, set the message_text to "You missed!"
+            # DONE 10: Start playing the mixer's music module,
+            #   looping forever, if the click is within the circle.
+            # DONE 11: Stop playing the mixer's music if the click
+            #   is outside the circle.
 
         screen.fill(pygame.Color("Black"))
 
-        # DONE 1: Draw the circle using the screen, circle_color, circle_center, circle_radius, and circle_border_width
+        # DONE 2: Draw the circle using the screen, circle_color,
+        #   circle_center, circle_radius, and circle_border_width.
         pygame.draw.circle(
             screen, circle_color, circle_center, circle_radius, circle_border_width
         )
+        # DONE 7: Create a text image (render the text) based on the
+        #   message_text with the color (122, 237, 201).
+        message_image = font.render(message_text, True, (122, 237, 201))
 
-        # DONE 6: Create a text image (render the text) based on the message_text with the color (122, 237, 201)
+        # DONE 8: Draw (blit) the message to the user that says
+        #   "Bullseye!" or "You missed!"
         screen.blit(instructions_image, (25, 25))
-        message = font.render(message_text, True, (122, 237, 201))
-
-        # DONE 7: Draw (blit) the message to the user that says 'Bullseye!' or 'You missed!'
-        screen.blit(message, (screen.get_width() // 2, screen.get_height() - 100))
+        screen.blit(message_image, (screen.get_width() // 2, screen.get_height() - 100))
 
         pygame.display.update()
 
